@@ -265,42 +265,86 @@
 </section>
 
   <!-- Projects -->
-  <section id="projects" class="py-20 bg-gray-900">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-gray-800/60 rounded-xl overflow-hidden border border-gray-700 hover:border-primary transition group">
-          <div class="h-48 bg-gradient-to-br from-indigo-900 to-gray-800 flex items-center justify-center">
-            <p class="text-2xl font-bold text-indigo-300">E-Commerce</p>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">E-Commerce Website</h3>
-            <p class="text-gray-400">Full stack shopping platform built with MERN stack (MongoDB, Express, React, Node.js).</p>
-          </div>
-        </div>
+<!-- Projects -->
+<section id="projects" class="py-20 bg-gray-900">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+      Featured Projects
+    </h2>
 
-        <div class="bg-gray-800/60 rounded-xl overflow-hidden border border-gray-700 hover:border-primary transition group">
-          <div class="h-48 bg-gradient-to-br from-indigo-900 to-gray-800 flex items-center justify-center">
-            <p class="text-2xl font-bold text-indigo-300">Portfolio</p>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
-            <p class="text-gray-400">Modern responsive personal portfolio with smooth animations and clean design.</p>
-          </div>
-        </div>
+    <p class="text-center text-gray-400 mb-16 max-w-3xl mx-auto text-lg">
+      A selection of full-stack and frontend projects built with the MERN stack and modern web technologies. Focused on clean code, responsive design, and real user value.
+    </p>
 
-        <div class="bg-gray-800/60 rounded-xl overflow-hidden border border-gray-700 hover:border-primary transition group">
-          <div class="h-48 bg-gradient-to-br from-indigo-900 to-gray-800 flex items-center justify-center">
-            <p class="text-2xl font-bold text-indigo-300">Task Manager</p>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Task Manager App</h3>
-            <p class="text-gray-400">CRUD-based productivity application with secure backend integration.</p>
-          </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Project 1: E-Commerce -->
+      <div class="group bg-gray-800/60 rounded-2xl overflow-hidden border border-gray-700 hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/20 flex flex-col h-full">
+        <div class="relative overflow-hidden h-56 md:h-64">
+          <img 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVGKjYgEv5xm8fur7mdTkbQSQF0kQL3sTMaw&s" 
+            alt="E-Commerce Website Preview" 
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-2xl font-semibold mb-3 text-white">E-Commerce Website</h3>
+          <p class="text-gray-400 mb-6 flex-grow">
+            Full-stack shopping platform built with MERN stack (MongoDB, Express, React, Node.js). Features product catalog, cart, user auth, and admin dashboard.
+          </p>
+          <a href="#" class="mt-auto inline-block bg-primary hover:bg-primaryDark px-6 py-3 rounded-lg font-medium transition text-center shadow-md shadow-indigo-500/20 hover:shadow-lg">
+            View Project →
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 2: Portfolio Website -->
+      <div class="group bg-gray-800/60 rounded-2xl overflow-hidden border border-gray-700 hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/20 flex flex-col h-full">
+        <div class="relative overflow-hidden h-56 md:h-64">
+          <img 
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+            alt="Portfolio Website Preview" 
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-2xl font-semibold mb-3 text-white">Portfolio Website</h3>
+          <p class="text-gray-400 mb-6 flex-grow">
+            Modern, responsive personal portfolio showcasing projects with smooth animations, dark mode, and clean typography — built with Tailwind CSS.
+          </p>
+          <a href="#" class="mt-auto inline-block bg-primary hover:bg-primaryDark px-6 py-3 rounded-lg font-medium transition text-center shadow-md shadow-indigo-500/20 hover:shadow-lg">
+            View Project →
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 3: Task Manager App -->
+      <div class="group bg-gray-800/60 rounded-2xl overflow-hidden border border-gray-700 hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/20 flex flex-col h-full">
+        <div class="relative overflow-hidden h-56 md:h-64">
+          <img 
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+            alt="Task Manager App Preview" 
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-2xl font-semibold mb-3 text-white">Task Manager App</h3>
+          <p class="text-gray-400 mb-6 flex-grow">
+            CRUD-based productivity tool with task creation, editing, deletion, categories, and backend persistence — perfect for daily organization.
+          </p>
+          <a href="#" class="mt-auto inline-block bg-primary hover:bg-primaryDark px-6 py-3 rounded-lg font-medium transition text-center shadow-md shadow-indigo-500/20 hover:shadow-lg">
+            View Project →
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Contact / Improved -->
   <section id="contact" class="py-20">
