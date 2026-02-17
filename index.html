@@ -1,556 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bhavik | Full Stack Developer</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: linear-gradient(180deg, #05060a 0%, #0b1020 100%);
-      color: white;
-      overflow-x: hidden;
-    }
-
-    section {
-      padding: 100px 10%;
-    }
-
-    h2 {
-      font-size: 36px;
-      margin-bottom: 40px;
-      text-align: center;
-      background: linear-gradient(90deg, #8b5cf6, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 18px 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: transparent;
-      z-index: 1000;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: white
-    }
-
-    .logo .line {
-      font-size: 26px;
-      color: #c084fc;
-      animation: blink 1.2s infinite
-    }
-
-    @keyframes blink {
-      0% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: 0.3
-      }
-
-      100% {
-        opacity: 1
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',     // indigo-500
+            primaryDark: '#4f46e5', // indigo-600
+          }
+        }
       }
     }
-
-    nav ul {
-      display: flex;
-      gap: 26px;
-      list-style: none
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      transition: .25s
-    }
-
-    nav ul li a:hover {
-      color: #c084fc
-    }
-
-    /* Hero with header-only background image */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(5, 6, 10, 0.6) 0%, rgba(5, 6, 10, 0.85) 60%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 950px;
-      width: 100%;
-      margin: 0 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .glass {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-      border-radius: 18px;
-      padding: 34px 48px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 14px
-    }
-
-    .hero span {
-      color: #c084fc
-    }
-
-    .hero p {
-      max-width: 760px;
-      color: #cbd5e1;
-      margin-bottom: 22px
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center
-    }
-
-    .btn {
-      padding: 12px 28px;
-      border-radius: 30px;
-      background: linear-gradient(90deg, #8b5cf6, #6d28d9);
-      color: white;
-      text-decoration: none;
-      box-shadow: 0 8px 25px rgba(109, 40, 217, 0.18);
-      transition: .25s
-    }
-
-    .btn:hover {
-      transform: translateY(-3px)
-    }
-
-    .btn.btn-outline {
-      background: transparent;
-      border: 1px solid rgba(192, 132, 252, 0.18);
-    }
-
-    /* Decorative floating blobs */
-    .hero-decor {
-      position: absolute;
-      inset: auto 8% 12% auto;
-      pointer-events: none
-    }
-
-    .blob {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      filter: blur(40px);
-      opacity: 0.45
-    }
-
-    .blob.purple {
-      background: #7c3aed;
-      right: -40px;
-      top: 40px
-    }
-
-    .blob.blue {
-      background: #06b6d4;
-      left: -60px;
-      bottom: 40px
-    }
-
-    /* Hero grid specifics */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 36px;
-      align-items: center
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px
-    }
-
-    .avatar-wrap {
-      width: 220px;
-      height: 220px;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 12px 40px rgba(2, 6, 23, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.04)
-    }
-
-    .avatar {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block
-    }
-
-    .socials {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center
-    }
-
-    .socials a {
-      color: #cbd5e1;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.02);
-      font-size: 14px
-    }
-
-    .hero-right h1 {
-      margin: 0 0 8px 0
-    }
-
-    .lead {
-      color: #d1d8e0;
-      margin-bottom: 18px
-    }
-
-    @media(max-width:880px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 20px
-      }
-
-      .avatar-wrap {
-        width: 160px;
-        height: 160px
-      }
-    }
-
-    /* Sections */
-    .about p {
-      color: #cbd5e1;
-      line-height: 1.7;
-      margin-bottom: 20px
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 30px;
-      text-align: center
-    }
-
-    .skill-card {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 26px;
-      border-radius: 14px;
-      transition: .25s
-    }
-
-    .skill-card:hover {
-      transform: translateY(-8px);
-      background: rgba(139, 92, 246, 0.06)
-    }
-
-    .skill-card img {
-      width: 50px;
-      margin-bottom: 10px
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px
-    }
-
-    .project-card {
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: .25s
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px)
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover
-    }
-
-    .project-card div {
-      padding: 18px
-    }
-
-    .project-card h3 {
-      margin-bottom: 10px;
-      color: #c084fc
-    }
-
-    .project-card p {
-      color: #cbd5e1;
-      font-size: 14px
-    }
-
-    .contact-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px
-    }
-
-    .contact-left {
-      flex: 1
-    }
-
-    .contact-form {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 20px
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      color: white
-    }
-
-    .contact-form button {
-      padding: 15px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(90deg, #8b5cf6, #6d28d9);
-      color: white;
-      cursor: pointer;
-      transition: .2s
-    }
-
-    .contact-form button:hover {
-      transform: scale(1.03)
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: transparent;
-      margin-top: 50px;
-      color: #9aa3b2
-    }
-
-    @media(max-width:900px) {
-      section {
-        padding: 80px 6%
-      }
-
-      .hero h1 {
-        font-size: 34px
-      }
-
-      .hero p {
-        font-size: 15px
-      }
-    }
-
-    @media(max-width:520px) {
-      nav {
-        padding: 14px 6%
-      }
-
-      nav ul {
-        display: none
-      }
-
-      section {
-        padding: 60px 5%
-      }
-
-      .glass {
-        padding: 22px
-      }
-    }
-  </style>
+  </script>
 </head>
+<style>
+    /* Add to <style> or tailwind.config extend → animation */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+</style>
+<body class="bg-gray-950 text-gray-100 min-h-screen font-sans antialiased">
 
-<body>
-
-  <nav>
-    <div class="logo">
-      BS<span class="line">|</span> Bhavik
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-gray-800 shadow-lg">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="logo text-2xl md:text-3xl font-bold text-white tracking-tight flex items-center gap-2">
+      BS<span class="line text-primary text-3xl font-extrabold">|</span> Bhavik
     </div>
 
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+    <!-- Menu items (visible on md+ screens) -->
+    <ul class="hidden md:flex items-center space-x-10 text-gray-200 font-medium">
+      <li>
+        <a href="#about" class="hover:text-primary transition-colors duration-200 hover:underline underline-offset-4">
+          About
+        </a>
+      </li>
+      <li>
+        <a href="#skills" class="hover:text-primary transition-colors duration-200 hover:underline underline-offset-4">
+          Skills
+        </a>
+      </li>
+      <li>
+        <a href="#projects" class="hover:text-primary transition-colors duration-200 hover:underline underline-offset-4">
+          Projects
+        </a>
+      </li>
+      <li>
+        <a href="#contact" class="hover:text-primary transition-colors duration-200 hover:underline underline-offset-4">
+          Contact
+        </a>
+      </li>
     </ul>
-  </nav>
+
+    <!-- Mobile menu button (placeholder – add JS later if needed) -->
+    <button class="md:hidden text-gray-300 hover:text-primary focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
 
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="glass hero-grid">
-        <div class="hero-left">
-          <div class="avatar-wrap">
-            <img class="avatar" src="https://avatars.githubusercontent.com/u/178549531?v=4" alt="Bhavik">
-          </div>
-          <div class="socials">
-            <a href="https://www.linkedin.com/in/bhavik-sirvi-6b8831323/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/bhaviksirvi20" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <h1>Hi, I'm <span>Bhavik</span></h1>
-          <p class="lead">Full Stack Developer — building clean, maintainable and scalable web apps. Focused on UX,
-            performance and real-world results.</p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn">View My Work</a>
-            <a href="#contact" class="btn btn-outline">Let's Talk</a>
-          </div>
-        </div>
+  <!-- Hero -->
+<!-- Hero -->
+<section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-gray-900 to-gray-950 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <!-- Avatar - placed before name for visual hierarchy -->
+    <div class="mb-8 md:mb-10">
+      <div class="relative inline-block group">
+        <img 
+          src="https://avatars.githubusercontent.com/u/178549531?v=4" 
+          alt="Bhavik - Full Stack Developer" 
+          class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full border-4 border-indigo-500/30 shadow-2xl shadow-indigo-500/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-indigo-500/30 ring-2 ring-indigo-500/40"
+          loading="eager"
+        />
+        <!-- Optional subtle glow/pulse effect -->
+        <div class="absolute inset-0 rounded-full bg-indigo-500/10 animate-pulse-slow pointer-events-none"></div>
       </div>
     </div>
-    <div class="hero-decor">
-      <div class="blob purple"></div>
-      <div class="blob blue"></div>
-    </div>
-  </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="glass about">
-      <p>I am currently pursuing <b>Bachelor of Computer Applications (BCA)</b> from Saurashtra University.</p>
-      <p>I have completed Full Stack Development course from Red & White Multimedia Education and gained practical
-        training experience.</p>
-      <p>12th (Shree Bharti Mahavidhyalay) – 72.42%</p>
-      <p>10th (Shree Bharti Mahavidhyalay) – 72.00%</p>
-    </div>
-  </section>
+    <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+      Hi, I'm <span class="text-primary">Bhavik</span>
+    </h1>
+    
+    <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+      Full Stack Developer — building clean, maintainable and scalable web apps.<br class="hidden sm:block" />
+      Focused on great UX, performance, and real-world results.
+    </p>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card"><img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
-        <p>HTML</p>
-      </div>
-      <div class="skill-card"><img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
-        <p>CSS</p>
-      </div>
-      <div class="skill-card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
-        <p>JavaScript</p>
-      </div>
-      <div class="skill-card"><img src="https://cdn-icons-png.flaticon.com/512/919/919825.png">
-        <p>Node.js</p>
-      </div>
-      <div class="skill-card"><img src="https://cdn-icons-png.flaticon.com/512/919/919836.png">
-        <p>MongoDB</p>
-      </div>
+    <div class="flex flex-col sm:flex-row gap-5 justify-center mb-10">
+      <a href="#projects" 
+         class="bg-primary hover:bg-primaryDark px-8 py-4 rounded-lg font-medium transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30 transform hover:-translate-y-1">
+        View My Work
+      </a>
+      <a href="#contact" 
+         class="border border-gray-600 hover:border-primary hover:text-primary px-8 py-4 rounded-lg font-medium transition-all hover:shadow-md transform hover:-translate-y-1">
+        Let's Talk
+      </a>
     </div>
-  </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231">
+    <div class="flex justify-center gap-8 text-lg">
+      <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" 
+         class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer" 
+         class="text-gray-400 hover:text-primary transition-colors flex items-center gap-2">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+
+  <!-- Optional subtle background accent -->
+  <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-indigo-600 rounded-full blur-3xl"></div>
+  </div>
+</section>
+
+  <!-- About & Education -->
+  <section id="about" class="py-20 bg-gray-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-12">
         <div>
-          <h3>E-Commerce Website</h3>
-          <p>Full stack shopping platform using MERN stack.</p>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            I am a passionate full-stack developer currently pursuing my <strong>Bachelor of Computer Applications (BCA)</strong> from Saurashtra University.  
+            I completed a comprehensive Full Stack Development course from <strong>Red & White Multimedia Education</strong>, where I gained strong hands-on experience building real-world applications.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            I love creating fast, responsive, and user-friendly web experiences with clean code and modern technologies.
+          </p>
         </div>
-      </div>
 
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
-        <div>
-          <h3>Portfolio Website</h3>
-          <p>Modern responsive personal portfolio with animations.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
-        <div>
-          <h3>Task Manager App</h3>
-          <p>CRUD based productivity application with backend integration.</p>
+        <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
+          <h3 class="text-2xl font-semibold mb-6 text-primary">Education</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-medium text-lg">Bachelor of Computer Applications (BCA)</h4>
+              <p class="text-gray-400">Saurashtra University — Pursuing</p>
+            </div>
+            <div>
+              <h4 class="font-medium text-lg">Full Stack Development Course</h4>
+              <p class="text-gray-400">Red & White Multimedia Education — Completed with practical training</p>
+            </div>
+            <div>
+              <h4 class="font-medium text-lg">12th Standard</h4>
+              <p class="text-gray-400">Shree Bharti Mahavidhyalay — 72.42%</p>
+            </div>
+            <div>
+              <h4 class="font-medium text-lg">10th Standard</h4>
+              <p class="text-gray-400">Shree Bharti Mahavidhyalay — 72.00%</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Get In Touch</h2>
-    <div class="contact-wrapper glass">
-      <div class="contact-left">
-        <h3>Let's Build Something Amazing 🚀</h3>
-        <p>If you have a project idea or collaboration opportunity, feel free to contact me.</p>
-        <p>Email: bhaviksirvi964@gmail.com</p>
-        <p>Location: Gujarat, India</p>
+  <!-- Skills -->
+<!-- Skills -->
+<section id="skills" class="py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+      Technical Skills
+    </h2>
+    
+    <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto text-lg">
+      Proficient in the full MERN stack (MongoDB, Express.js, React, Node.js) + core web technologies. Building modern, scalable web applications with clean code and strong focus on performance & UX.
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+      <!-- HTML -->
+      <div class="group bg-gray-800/60 p-6 rounded-2xl text-center border border-gray-700 hover:border-primary hover:bg-gray-800/80 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20 flex flex-col items-center">
+        <img 
+          src="https://cdn.freebiesupply.com/logos/thumbs/2x/html-5-logo.png" 
+          alt="HTML5" 
+          class="w-20 h-20 md:w-24 md:h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+          title="HTML5 - Semantic Markup & Accessibility"
+        />
+        <p class="text-xl font-semibold text-gray-100">HTML</p>
       </div>
 
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+      <!-- CSS -->
+      <div class="group bg-gray-800/60 p-6 rounded-2xl text-center border border-gray-700 hover:border-primary hover:bg-gray-800/80 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20 flex flex-col items-center">
+        <img 
+          src="https://cdn.freebiesupply.com/logos/thumbs/2x/css3-logo.png" 
+          alt="CSS3" 
+          class="w-20 h-20 md:w-24 md:h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+          title="CSS3 - Responsive Design, Flexbox, Grid, Animations"
+        />
+        <p class="text-xl font-semibold text-gray-100">CSS</p>
+      </div>
+
+      <!-- JavaScript -->
+      <div class="group bg-gray-800/60 p-6 rounded-2xl text-center border border-gray-700 hover:border-primary hover:bg-gray-800/80 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20 flex flex-col items-center">
+        <img 
+          src="https://1000logos.net/wp-content/uploads/2020/09/JavaScript-Logo.png" 
+          alt="JavaScript" 
+          class="w-20 h-20 md:w-24 md:h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+          title="JavaScript (ES6+) - Async/Await, DOM, APIs"
+        />
+        <p class="text-xl font-semibold text-gray-100">JavaScript</p>
+      </div>
+
+      <!-- React -->
+      <div class="group bg-gray-800/60 p-6 rounded-2xl text-center border border-gray-700 hover:border-primary hover:bg-gray-800/80 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20 flex flex-col items-center">
+        <img 
+          src="https://1000logos.net/wp-content/uploads/2023/10/React-Logo.png" 
+          alt="React" 
+          class="w-20 h-20 md:w-24 md:h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+          title="React - Components, Hooks, State Management"
+        />
+        <p class="text-xl font-semibold text-gray-100">React</p>
+      </div>
+
+      <!-- Node.js -->
+      <div class="group bg-gray-800/60 p-6 rounded-2xl text-center border border-gray-700 hover:border-primary hover:bg-gray-800/80 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20 flex flex-col items-center">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png" 
+          alt="Node.js" 
+          class="w-20 h-20 md:w-24 md:h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+          title="Node.js - Server-side JavaScript, REST APIs"
+        />
+        <p class="text-xl font-semibold text-gray-100">Node.js</p>
+      </div>
+
+      <!-- Express.js -->
+      <div class="group bg-gray-800/60 p-6 rounded-2xl text-center border border-gray-700 hover:border-primary hover:bg-gray-800/80 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20 flex flex-col items-center">
+        <img 
+          src="https://p7.hiclipart.com/preview/545/451/583/node-js-express-js-javascript-solution-stack-web-application-others.jpg" 
+          alt="Express.js" 
+          class="w-20 h-20 md:w-24 md:h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+          title="Express.js - Web Framework for Node.js"
+        />
+        <p class="text-xl font-semibold text-gray-100">Express.js</p>
+      </div>
+
+      <!-- MongoDB -->
+      <div class="group bg-gray-800/60 p-6 rounded-2xl text-center border border-gray-700 hover:border-primary hover:bg-gray-800/80 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20 flex flex-col items-center">
+        <img 
+          src="https://cdn.freebiesupply.com/logos/thumbs/2x/mongodb-logo.png" 
+          alt="MongoDB" 
+          class="w-20 h-20 md:w-24 md:h-24 object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+          title="MongoDB - NoSQL Database, Mongoose ORM"
+        />
+        <p class="text-xl font-semibold text-gray-100">MongoDB</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20 bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-800/60 rounded-xl overflow-hidden border border-gray-700 hover:border-primary transition group">
+          <div class="h-48 bg-gradient-to-br from-indigo-900 to-gray-800 flex items-center justify-center">
+            <p class="text-2xl font-bold text-indigo-300">E-Commerce</p>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">E-Commerce Website</h3>
+            <p class="text-gray-400">Full stack shopping platform built with MERN stack (MongoDB, Express, React, Node.js).</p>
+          </div>
+        </div>
+
+        <div class="bg-gray-800/60 rounded-xl overflow-hidden border border-gray-700 hover:border-primary transition group">
+          <div class="h-48 bg-gradient-to-br from-indigo-900 to-gray-800 flex items-center justify-center">
+            <p class="text-2xl font-bold text-indigo-300">Portfolio</p>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
+            <p class="text-gray-400">Modern responsive personal portfolio with smooth animations and clean design.</p>
+          </div>
+        </div>
+
+        <div class="bg-gray-800/60 rounded-xl overflow-hidden border border-gray-700 hover:border-primary transition group">
+          <div class="h-48 bg-gradient-to-br from-indigo-900 to-gray-800 flex items-center justify-center">
+            <p class="text-2xl font-bold text-indigo-300">Task Manager</p>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Task Manager App</h3>
+            <p class="text-gray-400">CRUD-based productivity application with secure backend integration.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer>
-    © 2026 Bhavik | Full Stack Developer
+  <!-- Contact / Improved -->
+  <section id="contact" class="py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
+      <p class="text-xl text-gray-300 mb-10">Let's Build Something Amazing 🚀</p>
+      
+      <div class="bg-gray-800/60 p-8 md:p-10 rounded-2xl border border-gray-700 max-w-2xl mx-auto">
+        <p class="text-lg mb-6">Have a project idea or collaboration opportunity? Feel free to reach out.</p>
+        
+        <div class="space-y-4 mb-8 text-left inline-block">
+          <p><strong>Email:</strong> <a href="mailto:bhaviksirvi964@gmail.com" class="text-primary hover:underline">bhaviksirvi964@gmail.com</a></p>
+          <p><strong>Location:</strong> Gujarat, India</p>
+        </div>
+
+        <!-- Simple contact form (can connect to Formspree/Getform later) -->
+        <form class="space-y-6">
+          <input type="text" placeholder="Your Name" class="w-full px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+          <input type="email" placeholder="Your Email" class="w-full px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+          <textarea rows="5" placeholder="Your Message..." class="w-full px-5 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"></textarea>
+          <button type="submit" class="w-full bg-primary hover:bg-primaryDark px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-indigo-500/20">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-950 border-t border-gray-800 text-center text-gray-500">
+    <p>© 2026 Bhavik | Full Stack Developer</p>
   </footer>
 
 </body>
-
 </html>
